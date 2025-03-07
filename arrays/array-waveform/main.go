@@ -1,14 +1,40 @@
 package main
 
-func main() {}
+import "fmt"
 
-func waveForm() {}
+func main() {
+	arr1 := []int{1, 4, 1, 9, 2, -7, 6, 8, 0, -2}
+	fmt.Println("before: ", arr1)
+	WaveForm(arr1)
+	fmt.Println("after: ", arr1)
+
+	arr2 := []int{-10, -4, 11, 19, 12, -7, 3, 7, -20, 42, 6, 8, 0, -2}
+	fmt.Println("before: ", arr2)
+	WaveForm(arr2)
+	fmt.Println("after: ", arr2)
+}
+
+func WaveForm(arr []int) {
+	// Initialise the first window, window slides two indices down each iteration
+	for i, j, k := 0, 1, 2; k < len(arr); i, j, k = i+2, j+2, k+2 {
+		if arr[i] < arr[j] {
+			tmp := arr[i]
+			arr[i] = arr[j]
+			arr[j] = tmp
+		}
+		if arr[k] < arr[j] {
+			tmp := arr[k]
+			arr[k] = arr[j]
+			arr[j] = tmp
+		}
+	}
+}
 
 // I can think of two approaches to solve this problemm
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Approach 1
-// Given some array [1,4,1,9,2,,-7,6,8,0,-2]
+// Given some array [1,4,1,9,2,-7,6,8,0,-2]
 // We can order it first in O(nlog(n)) time using the quicksort algorithm - this isn't a bad first step since sorting is a "for free" primitive operaion as Tim Roughgarden puts it in his book
 // So the sorted array becomes [-7,-2,0,1,1,2,4,6,8,9]
 
@@ -57,6 +83,7 @@ func waveForm() {}
 // if b>3 then we the waveform is maintained so we get [2,1,a,3,b]
 
 // So we see that via this method, we just need to keep track of the current index that we are "adding" an element at, and compare it with the previous element
+// But instead of adding an elemnent, we will be sliding a window of size 3 down the array and swapping as necessary
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Of the two approaches, approach 2 is better since it requires only a traversal of the array so it is O(n), whereas the best sorting algorithms run in O(nlogn), so we'll go with approach 2
