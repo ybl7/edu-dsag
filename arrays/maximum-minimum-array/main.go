@@ -40,3 +40,5 @@ func MaxMinArr(arr []int) []int {
 // Then create a new array and populate it by walking down each array, even indexes populated from R and odd from L.
 // [20] -> [20,1] -> [20,1,8]
 // In practice if we have two pointers, one walking up the array and one down it, this accomplishes the stask.
+
+// We end up iterating through the output array one time, perfoming O(1) lookups against the input array, so this is O(1) in both time and space
