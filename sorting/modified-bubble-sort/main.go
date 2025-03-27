@@ -7,10 +7,13 @@ func main() {
 }
 
 func BubbleSort(arr []int) {
-	for i := 0; i < len(arr)-1; i++ {
+	swapped := true
+	for i := 0; i < len(arr)-1 && swapped; i++ {
+		swapped = false
 		for j := 0; j < len(arr)-i-1; j++ {
 			if arr[j] > arr[j+1] {
 				arr[j+1], arr[j] = arr[j], arr[j+1]
+				swapped = true
 			}
 		}
 	}
@@ -21,3 +24,6 @@ func BubbleSort(arr []int) {
 // The value of j runs up to the length of the array minus the current value of i, bubble sort guarantees that the last n elements will be sorted after n runs
 // The number of runs is controlled by i, and it can be shown that at max we need len(arr) runs
 // So i is really just a counter of runs, and j is used to create the sliding window to perform the bubble sort, hence why j always starts from 0
+
+// The only difference with modified bubble sort compared to regular bubble sort is that we stop iterating through the array once we have ordered everything
+// This means we track when no swaps have happened during some iteration of i
