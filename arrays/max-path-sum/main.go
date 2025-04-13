@@ -6,10 +6,6 @@ func main() {
 	arr1 := []int{12, 13, 18, 20, 22, 26, 70}
 	arr2 := []int{11, 15, 18, 19, 20, 26, 30, 31, 100}
 	fmt.Println("MaxPathSum: ", MaxPathSum(arr1, arr2))
-
-	// arr3 := []int{2, 3, 7, 10, 12, 15, 30, 34}
-	// arr4 := []int{1, 5, 7, 8, 10, 15, 16, 19}
-	// fmt.Println("MaxPathSum: ", MaxPathSum(arr3, arr4))
 }
 
 func MaxPathSum(arr1, arr2 []int) int {
@@ -32,7 +28,6 @@ func MaxPathSum(arr1, arr2 []int) int {
 			} else {
 				total += sum_i
 			}
-			fmt.Println("total: ", total)
 			sum_i = 0
 			sum_j = 0
 			i++
@@ -40,6 +35,7 @@ func MaxPathSum(arr1, arr2 []int) int {
 		}
 	}
 
+	// Collect whatever remains of the longer array
 	for i < len(arr1) {
 		sum_i += arr1[i]
 		i++
