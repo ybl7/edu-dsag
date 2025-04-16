@@ -1,14 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	stack := new(StackInt)
 
-	stack.SortedInsert(6)
-	stack.SortedInsert(3)
-	stack.SortedInsert(2)
-	stack.SortedInsert(5)
+	SortedInsert(stack, 6)
+	SortedInsert(stack, 3)
+	SortedInsert(stack, 2)
+	SortedInsert(stack, 5)
 
 	fmt.Println("Top() of the stack is: ", stack.Top())
 	fmt.Print("Stack consist of following elements: ")
@@ -20,11 +22,11 @@ func main() {
 	st1 := StackInt{
 		s: []int{1, 2, 4, 9},
 	}
-	st1.SortedInsert(3)
-	st1.SortedInsert(7)
-	st1.SortedInsert(8)
-	st1.SortedInsert(10)
-	st1.SortedInsert(11)
+	SortedInsert(&st1, 3)
+	SortedInsert(&st1, 7)
+	SortedInsert(&st1, 8)
+	SortedInsert(&st1, 10)
+	SortedInsert(&st1, 11)
 
 	fmt.Print("st1 consist of following elements: ")
 	for !st1.IsEmpty() {
@@ -35,11 +37,11 @@ func main() {
 	st2 := StackInt{
 		s: []int{1, 2, 4, 9},
 	}
-	st2.SortedInsertRec(3)
-	st2.SortedInsertRec(7)
-	st2.SortedInsertRec(8)
-	st2.SortedInsertRec(10)
-	st2.SortedInsertRec(11)
+	SortedInsertRec(&st2, 3)
+	SortedInsertRec(&st2, 7)
+	SortedInsertRec(&st2, 8)
+	SortedInsertRec(&st2, 10)
+	SortedInsertRec(&st2, 11)
 
 	fmt.Print("st2 consist of following elements: ")
 	for !st2.IsEmpty() {
@@ -50,7 +52,7 @@ func main() {
 }
 
 // This is a very bad way that operates on the underlying data structure, you can accomplish this using just the stack ADT ooperations
-func (s *StackInt) SortedInsert(n int) {
+func SortedInsert(s *StackInt, n int) {
 	if s.IsEmpty() {
 		s.s = append(s.s, n)
 		return
@@ -80,13 +82,13 @@ func (s *StackInt) SortedInsert(n int) {
 }
 
 // Method two is so much cleaner and easier to see
-func (s *StackInt) SortedInsertRec(n int) {
+func SortedInsertRec(s *StackInt, n int) {
 	var temp int
 	if s.Length() == 0 || n > s.Top() {
 		s.Push(n)
 	} else {
 		temp = s.Pop()
-		s.SortedInsertRec(n)
+		SortedInsertRec(s, n)
 		s.Push(temp)
 	}
 }
