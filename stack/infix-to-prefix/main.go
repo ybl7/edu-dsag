@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	fmt.Println(InfixToPrefix("10+((3))*5/(16-4)"))
-	fmt.Println(InfixToPrefix("((5+6)+9)"))
-	fmt.Println(InfixToPrefix("((3+2)*(3-9)/(9))"))
+	fmt.Println(InfixToPrefix("10+((3))*5/(16-4)")) // +10 * 3 / 5 - 16 4
+	fmt.Println(InfixToPrefix("((5+6)+9)"))         // ++569
+	fmt.Println(InfixToPrefix("((3+2)*(3-9)/(9))")) // /*+32-399
 	fmt.Println(InfixToPrefix("13+((5-9)*(2*9))"))
 	// fmt.Println(string('+'))
 }
@@ -26,9 +26,9 @@ func InfixToPrefix(s string) string {
 		if e == '(' {
 			// Pop all operators in the parantheses and push
 			for !st.IsEmpty() && st.Top() != ")" {
-				out = string(st.Pop()) + out
+				out += string(st.Pop())
 			}
-			if st.Top() == ")" && !st.IsEmpty() {
+			if !st.IsEmpty() && st.Top() == ")" {
 				st.Pop()
 			}
 		} else if e == ')' {
@@ -38,28 +38,31 @@ func InfixToPrefix(s string) string {
 				st.Push(string(e))
 				continue
 			}
-			if st.Top() == ")" {
-				st.Push(string(e))
-				continue
-			}
 			// If the incoming element has higher priority than the existing, then it can be added
 			if Priority(string(e), st.Top()) {
 				st.Push(string(e))
 				continue
 			}
+			// Clear the stack of lower priority operators before pushing this one one
 			for !Priority(string(e), st.Top()) {
-				out = st.Pop() + out
+				out += st.Pop()
 			}
+			st.Push(string(e))
 		} else if IsDigit(e) {
-			out = string(e) + out
+			out += string(e)
 		}
 	}
 
 	// Add whatever operators are left
 	for !st.IsEmpty() {
-		out = st.Pop() + out
+		out += st.Pop()
 	}
-	return out
+
+	ret := ""
+	for _, e := range out {
+		ret = string(e) + ret
+	}
+	return ret
 }
 
 func IsDigit(s rune) bool {
@@ -89,7 +92,7 @@ func Priority(s, t string) bool {
 	return p[s] > p[t]
 }
 
-// Let's first understadn prefix notation with an example expression: (A + B * C) * (D - E) / F
+// Let's first understand prefix notation with an example expression: (A + B * C) * (D - E) / F
 // First, paranthesise everything according to BIDMAS: ((A + (B * C)) * ((D - E) / F))
 // Next, shift all operators to the right of their operands: *(+(A*(BC))/(-(DE)F))
 // Then remove brackets: *+A*BC/-DEF, how do we interpret this?
