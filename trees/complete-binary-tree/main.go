@@ -6,50 +6,50 @@ import (
 )
 
 type BinTree struct {
-	root *Node
+	Root *Node
 }
 
 type Node struct {
-	val   int
-	left  *Node
-	right *Node
+	Val   int
+	Left  *Node
+	Right *Node
 }
 
 func CompBinTree(arr []int) *BinTree {
 	b := &BinTree{
-		root: GenTree(arr, 0),
+		Root: GenTree(arr, 0),
 	}
 	return b
 }
 
 func GenTree(arr []int, i int) *Node {
 	n := &Node{}
-	n.val = arr[i]
+	n.Val = arr[i]
 	l := 2*i + 1
 	r := 2*i + 2
 
 	if l < len(arr) {
-		n.left = GenTree(arr, l)
+		n.Left = GenTree(arr, l)
 	}
 	if r < len(arr) {
-		n.right = GenTree(arr, r)
+		n.Right = GenTree(arr, r)
 	}
 	return n
 }
 
 func PrintCompBinTree(b *BinTree) {
-	PrintNodeRec(b.root, 0)
+	PrintNodeRec(b.Root, 0)
 	fmt.Println()
 }
 
 func PrintNodeRec(t *Node, i int) {
 	s := strings.Repeat("\t", i)
-	if t.left != nil {
-		PrintNodeRec(t.left, i+1)
+	if t.Left != nil {
+		PrintNodeRec(t.Left, i+1)
 	}
-	fmt.Println(s, t.val)
-	if t.right != nil {
-		PrintNodeRec(t.right, i+1)
+	fmt.Println(s, t.Val)
+	if t.Right != nil {
+		PrintNodeRec(t.Right, i+1)
 	}
 }
 

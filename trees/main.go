@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	cbt "trees/complete-binary-tree"
+	pre "trees/preorder"
 )
 
 func main() {
@@ -13,4 +15,7 @@ func main() {
 func TestBinTree(arr []int) {
 	t := cbt.CompBinTree(arr)
 	cbt.PrintCompBinTree(t)
+
+	fmt.Println("PreOrder")
+	pre.PreOrderTree(t)
 }
