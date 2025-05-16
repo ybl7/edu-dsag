@@ -38,18 +38,18 @@ func GenTree(arr []int, i int) *Node {
 }
 
 func PrintCompBinTree(b *BinTree) {
-	PrintNodeRec(b.Root, 0)
+	PrintNodeRec(b.Root, 0, "")
 	fmt.Println()
 }
 
-func PrintNodeRec(t *Node, i int) {
+func PrintNodeRec(t *Node, i int, p string) {
 	s := strings.Repeat("\t", i)
-	if t.Left != nil {
-		PrintNodeRec(t.Left, i+1)
-	}
-	fmt.Println(s, t.Val)
 	if t.Right != nil {
-		PrintNodeRec(t.Right, i+1)
+		PrintNodeRec(t.Right, i+1, "r")
+	}
+	fmt.Println(s, p, t.Val)
+	if t.Left != nil {
+		PrintNodeRec(t.Left, i+1, "l")
 	}
 }
 

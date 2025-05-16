@@ -6,6 +6,7 @@ import (
 )
 
 func PreOrderTree(t *cbt.BinTree) {
+	fmt.Println("PreOrder")
 	PreOrder(t.Root)
 	fmt.Println()
 }
