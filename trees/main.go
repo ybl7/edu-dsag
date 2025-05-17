@@ -2,6 +2,7 @@ package main
 
 import (
 	cbt "trees/complete-binary-tree"
+	in "trees/inorder"
 	pst "trees/postorder"
 	pre "trees/preorder"
 )
@@ -17,6 +18,6 @@ func TestBinTree(arr []int) {
 	cbt.PrintCompBinTree(t)
 
 	pre.PreOrderTree(t)
-
 	pst.PostOrderTree(t)
+	in.InOrderTree(t)
 }
