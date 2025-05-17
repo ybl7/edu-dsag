@@ -1,6 +1,7 @@
 package main
 
 import (
+	bfs "trees/breadth-first"
 	cbt "trees/complete-binary-tree"
 	in "trees/inorder"
 	pst "trees/postorder"
@@ -20,4 +21,5 @@ func TestBinTree(arr []int) {
 	pre.PreOrderTree(t)
 	pst.PostOrderTree(t)
 	in.InOrderTree(t)
+	bfs.BreadthFirstTree(t)
 }
