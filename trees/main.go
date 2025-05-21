@@ -3,6 +3,7 @@ package main
 import (
 	bfs "trees/breadth-first"
 	cbt "trees/complete-binary-tree"
+	dfs "trees/depth-first"
 	in "trees/inorder"
 	pst "trees/postorder"
 	pre "trees/preorder"
@@ -22,4 +23,5 @@ func TestBinTree(arr []int) {
 	pst.PostOrderTree(t)
 	in.InOrderTree(t)
 	bfs.BreadthFirstTree(t)
+	dfs.DepthFirstTree(t)
 }
