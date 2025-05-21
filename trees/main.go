@@ -23,5 +23,6 @@ func TestBinTree(arr []int) {
 	pst.PostOrderTree(t)
 	in.InOrderTree(t)
 	bfs.BreadthFirstTree(t)
+	bfs.BreadthFirstLevelOrderTree(t)
 	dfs.DepthFirstTree(t)
 }
