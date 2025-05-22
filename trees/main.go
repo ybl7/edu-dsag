@@ -6,6 +6,7 @@ import (
 	cbt "trees/complete-binary-tree"
 	dfs "trees/depth-first"
 	in "trees/inorder"
+	npi "trees/nth-in-order"
 	npt "trees/nth-post-order"
 	npo "trees/nth-pre-order"
 	pst "trees/postorder"
@@ -44,4 +45,5 @@ func TestGetNth(arr []int, n int) {
 
 	npo.NthPreOrderTree(t, n)
 	npt.NthPostOrderTree(t, n)
+	npi.NthInOrderTree(t, n)
 }
