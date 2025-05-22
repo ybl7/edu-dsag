@@ -6,6 +6,7 @@ import (
 	cbt "trees/complete-binary-tree"
 	dfs "trees/depth-first"
 	in "trees/inorder"
+	npt "trees/nth-post-order"
 	npo "trees/nth-pre-order"
 	pst "trees/postorder"
 	pre "trees/preorder"
@@ -21,6 +22,7 @@ func main() {
 	TestGetNth([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5)
 	TestGetNth([]int{1, 2, 3, 4, 5, 6, 7}, 3)
 	TestGetNth([]int{1, 2, 3, 4}, 2)
+	TestGetNth([]int{0, 7, 1, 8, 2}, 3)
 }
 
 func TestBinTree(arr []int) {
@@ -40,5 +42,6 @@ func TestGetNth(arr []int, n int) {
 	t := cbt.CompBinTree(arr)
 	cbt.PrintCompBinTree(t)
 
-	npo.NthPreOrderTree(t, &n)
+	npo.NthPreOrderTree(t, n)
+	npt.NthPostOrderTree(t, n)
 }

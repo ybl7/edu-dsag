@@ -5,9 +5,9 @@ import (
 	cbt "trees/complete-binary-tree"
 )
 
-func NthPreOrderTree(t *cbt.BinTree, count *int) {
+func NthPreOrderTree(t *cbt.BinTree, count int) {
 	fmt.Println("NthPreOrder")
-	NthPreOrder(t.Root, count)
+	NthPreOrder(t.Root, &count)
 }
 
 func NthPreOrder(n *cbt.Node, count *int) {
