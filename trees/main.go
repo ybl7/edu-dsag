@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	bfs "trees/breadth-first"
 	spl "trees/breadth-first-spiral"
 	cbt "trees/complete-binary-tree"
@@ -11,6 +12,7 @@ import (
 	npo "trees/nth-pre-order"
 	pst "trees/postorder"
 	pre "trees/preorder"
+	pap "trees/print-all-paths"
 )
 
 func main() {
@@ -46,4 +48,6 @@ func TestGetNth(arr []int, n int) {
 	npo.NthPreOrderTree(t, n)
 	npt.NthPostOrderTree(t, n)
 	npi.NthInOrderTree(t, n)
+	pap.PrintAllPaths(t)
+	fmt.Println()
 }
