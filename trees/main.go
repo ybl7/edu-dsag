@@ -10,9 +10,11 @@ import (
 	npi "trees/nth-in-order"
 	npt "trees/nth-post-order"
 	npo "trees/nth-pre-order"
+	nel "trees/number-of-elements"
 	pst "trees/postorder"
 	pre "trees/preorder"
 	pap "trees/print-all-paths"
+	sum "trees/sum-elements"
 )
 
 func main() {
@@ -49,5 +51,7 @@ func TestGetNth(arr []int, n int) {
 	npt.NthPostOrderTree(t, n)
 	npi.NthInOrderTree(t, n)
 	pap.PrintAllPaths(t)
+	nel.CountNodesTree(t)
+	sum.SumNodesTree(t)
 	fmt.Println()
 }
