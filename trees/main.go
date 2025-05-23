@@ -5,16 +5,17 @@ import (
 	bfs "trees/breadth-first"
 	spl "trees/breadth-first-spiral"
 	cbt "trees/complete-binary-tree"
+	ctl "trees/count-leaves"
+	nel "trees/count-nodes"
 	dfs "trees/depth-first"
 	in "trees/inorder"
 	npi "trees/nth-in-order"
 	npt "trees/nth-post-order"
 	npo "trees/nth-pre-order"
-	nel "trees/number-of-elements"
 	pst "trees/postorder"
 	pre "trees/preorder"
 	pap "trees/print-all-paths"
-	sum "trees/sum-elements"
+	sum "trees/sum-nodes"
 )
 
 func main() {
@@ -53,5 +54,6 @@ func TestGetNth(arr []int, n int) {
 	pap.PrintAllPaths(t)
 	nel.CountNodesTree(t)
 	sum.SumNodesTree(t)
+	ctl.CountLeavesTree(t)
 	fmt.Println()
 }
