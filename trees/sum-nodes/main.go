@@ -6,7 +6,7 @@ import (
 )
 
 func SumNodesTree(t *cbt.BinTree) {
-	fmt.Println("SumElements")
+	fmt.Println("SumNodes")
 	fmt.Println(SumNodes(t.Root))
 }
 

@@ -16,6 +16,7 @@ import (
 	pst "trees/postorder"
 	pre "trees/preorder"
 	pap "trees/print-all-paths"
+	sch "trees/search-value"
 	sum "trees/sum-nodes"
 )
 
@@ -57,5 +58,6 @@ func TestGetNth(arr []int, n int) {
 	sum.SumNodesTree(t)
 	ctl.CountLeavesTree(t)
 	cfl.CountFullNodesTree(t)
+	sch.SearchTree(t, n)
 	fmt.Println()
 }
