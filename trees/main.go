@@ -5,6 +5,7 @@ import (
 	bfs "trees/breadth-first"
 	spl "trees/breadth-first-spiral"
 	cbt "trees/complete-binary-tree"
+	cfl "trees/count-full-nodes"
 	ctl "trees/count-leaves"
 	nel "trees/count-nodes"
 	dfs "trees/depth-first"
@@ -55,5 +56,6 @@ func TestGetNth(arr []int, n int) {
 	nel.CountNodesTree(t)
 	sum.SumNodesTree(t)
 	ctl.CountLeavesTree(t)
+	cfl.CountFullNodesTree(t)
 	fmt.Println()
 }
