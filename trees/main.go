@@ -9,6 +9,7 @@ import (
 	ctl "trees/count-leaves"
 	nel "trees/count-nodes"
 	dfs "trees/depth-first"
+	max "trees/find-max"
 	in "trees/inorder"
 	npi "trees/nth-in-order"
 	npt "trees/nth-post-order"
@@ -31,6 +32,7 @@ func main() {
 	TestGetNth([]int{1, 2, 3, 4, 5, 6, 7}, 3)
 	TestGetNth([]int{1, 2, 3, 4}, 2)
 	TestGetNth([]int{0, 7, 1, 8, 2}, 3)
+	TestGetNth([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, 3)
 }
 
 func TestBinTree(arr []int) {
@@ -48,6 +50,8 @@ func TestBinTree(arr []int) {
 
 func TestGetNth(arr []int, n int) {
 	t := cbt.CompBinTree(arr)
+	fmt.Println("--------------------------------------------------------------------------------")
+	fmt.Println()
 	cbt.PrintCompBinTree(t)
 
 	npo.NthPreOrderTree(t, n)
@@ -59,5 +63,6 @@ func TestGetNth(arr []int, n int) {
 	ctl.CountLeavesTree(t)
 	cfl.CountFullNodesTree(t)
 	sch.SearchTree(t, n)
+	max.FindMaxTree(t)
 	fmt.Println()
 }

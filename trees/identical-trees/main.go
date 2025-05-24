@@ -1,0 +1,1 @@
+// The root nodes t.root and t2.root of two binary trees will be our input. We have to find if the trees are identical using the isEqual() function
