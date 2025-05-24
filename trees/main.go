@@ -11,6 +11,7 @@ import (
 	dfs "trees/depth-first"
 	dpt "trees/find-depth"
 	max "trees/find-max"
+	eq "trees/identical-trees"
 	in "trees/inorder"
 	npi "trees/nth-in-order"
 	npt "trees/nth-post-order"
@@ -28,13 +29,18 @@ func main() {
 	// TestBinTree([]int{10, 100, 1000, 10000, 100000, 1000000, 10000000})
 	// TestBinTree([]int{0, 7, 2, 8, 1})
 
-	TestGetNth([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 7)
-	TestGetNth([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5)
-	TestGetNth([]int{1, 2, 3, 4, 5, 6, 7}, 3)
-	TestGetNth([]int{1, 2, 3, 4}, 2)
-	TestGetNth([]int{0, 7, 1, 8, 2}, 3)
-	TestGetNth([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, 3)
-	TestGetNth([]int{10}, 0)
+	// TestGetNth([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 7)
+	// TestGetNth([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5)
+	// TestGetNth([]int{1, 2, 3, 4, 5, 6, 7}, 3)
+	// TestGetNth([]int{1, 2, 3, 4}, 2)
+	// TestGetNth([]int{0, 7, 1, 8, 2}, 3)
+	// TestGetNth([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, 3)
+	// TestGetNth([]int{10}, 0)
+
+	TestIsEqual([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) // true
+	TestIsEqual([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7})           // false
+	TestIsEqual([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, []int{10, 9, 8, 7, 6, 5, 4, 3, 2})    // false
+	TestIsEqual([]int{1, 2, 3, 4, 5, 6, 7}, []int{1, 2, 3, 4, 5, 6, 7})                     // true
 }
 
 func TestBinTree(arr []int) {
@@ -68,4 +74,15 @@ func TestGetNth(arr []int, n int) {
 	max.FindMaxTree(t)
 	dpt.FindDepthTree(t)
 	fmt.Println()
+}
+
+func TestIsEqual(arr1, arr2 []int) {
+	t1 := cbt.CompBinTree(arr1)
+	t2 := cbt.CompBinTree(arr2)
+	fmt.Println("--------------------------------------------------------------------------------")
+	fmt.Println()
+	cbt.PrintCompBinTree(t1)
+	cbt.PrintCompBinTree(t2)
+
+	eq.IsEqualTree(t1, t2)
 }
