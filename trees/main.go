@@ -5,7 +5,12 @@ import (
 	bfs "trees/breadth-first"
 	spl "trees/breadth-first-spiral"
 	cbt "trees/complete-binary-tree"
-	cp "trees/copy-tree"
+
+	// cpm "trees/copy-mirror-tree"
+
+	// cp "trees/copy-tree"
+	// eq "trees/identical-trees"
+	cmp "trees/check-completeness"
 	cfl "trees/count-full-nodes"
 	ctl "trees/count-leaves"
 	nel "trees/count-nodes"
@@ -92,9 +97,13 @@ func TestTreeComp(arr1, arr2 []int) {
 	// fmt.Println("t3")
 	// cbt.PrintCompBinTree(t3)
 
-	t3 := cp.CopyMirrorTree(t1)
-	fmt.Println("t1")
+	// t3 := cpm.CopyMirrorTree(t1)
+	// fmt.Println("t1")
+	// cbt.PrintCompBinTree(t1)
+	// fmt.Println("t3")
+	// cbt.PrintCompBinTree(t3)
+
 	cbt.PrintCompBinTree(t1)
-	fmt.Println("t3")
-	cbt.PrintCompBinTree(t3)
+	fmt.Println("CheckCompleteness")
+	fmt.Println(cmp.CheckCompleteTree(t1))
 }
