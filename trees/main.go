@@ -5,6 +5,7 @@ import (
 	bfs "trees/breadth-first"
 	spl "trees/breadth-first-spiral"
 	cbt "trees/complete-binary-tree"
+	cp "trees/copy-tree"
 	cfl "trees/count-full-nodes"
 	ctl "trees/count-leaves"
 	nel "trees/count-nodes"
@@ -37,10 +38,10 @@ func main() {
 	// TestGetNth([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, 3)
 	// TestGetNth([]int{10}, 0)
 
-	TestIsEqual([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) // true
-	TestIsEqual([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7})           // false
-	TestIsEqual([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, []int{10, 9, 8, 7, 6, 5, 4, 3, 2})    // false
-	TestIsEqual([]int{1, 2, 3, 4, 5, 6, 7}, []int{1, 2, 3, 4, 5, 6, 7})                     // true
+	TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) // true
+	TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7})           // false
+	TestTreeComp([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, []int{10, 9, 8, 7, 6, 5, 4, 3, 2})    // false
+	TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7}, []int{1, 2, 3, 4, 5, 6, 7})                     // true
 }
 
 func TestBinTree(arr []int) {
@@ -76,13 +77,19 @@ func TestGetNth(arr []int, n int) {
 	fmt.Println()
 }
 
-func TestIsEqual(arr1, arr2 []int) {
+func TestTreeComp(arr1, arr2 []int) {
 	t1 := cbt.CompBinTree(arr1)
-	t2 := cbt.CompBinTree(arr2)
+	// t2 := cbt.CompBinTree(arr2)
 	fmt.Println("--------------------------------------------------------------------------------")
 	fmt.Println()
-	cbt.PrintCompBinTree(t1)
-	cbt.PrintCompBinTree(t2)
+	// cbt.PrintCompBinTree(t1)
+	// cbt.PrintCompBinTree(t2)
+	// eq.IsEqualTree(t1, t2)
 
-	eq.IsEqualTree(t1, t2)
+	t3 := cp.CopyTree(t1)
+	eq.IsEqualTree(t1, t3)
+	fmt.Println("t1")
+	cbt.PrintCompBinTree(t1)
+	fmt.Println("t3")
+	cbt.PrintCompBinTree(t3)
 }
