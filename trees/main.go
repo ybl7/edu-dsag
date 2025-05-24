@@ -12,7 +12,6 @@ import (
 	dfs "trees/depth-first"
 	dpt "trees/find-depth"
 	max "trees/find-max"
-	eq "trees/identical-trees"
 	in "trees/inorder"
 	npi "trees/nth-in-order"
 	npt "trees/nth-post-order"
@@ -86,8 +85,14 @@ func TestTreeComp(arr1, arr2 []int) {
 	// cbt.PrintCompBinTree(t2)
 	// eq.IsEqualTree(t1, t2)
 
-	t3 := cp.CopyTree(t1)
-	eq.IsEqualTree(t1, t3)
+	// t3 := cp.CopyTree(t1)
+	// eq.IsEqualTree(t1, t3)
+	// fmt.Println("t1")
+	// cbt.PrintCompBinTree(t1)
+	// fmt.Println("t3")
+	// cbt.PrintCompBinTree(t3)
+
+	t3 := cp.CopyMirrorTree(t1)
 	fmt.Println("t1")
 	cbt.PrintCompBinTree(t1)
 	fmt.Println("t3")
