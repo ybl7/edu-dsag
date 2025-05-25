@@ -18,6 +18,7 @@ import (
 	dpt "trees/find-depth"
 	max "trees/find-max"
 	in "trees/inorder"
+	mh "trees/is-min-heap"
 	npi "trees/nth-in-order"
 	npt "trees/nth-post-order"
 	npo "trees/nth-pre-order"
@@ -42,10 +43,17 @@ func main() {
 	// TestGetNth([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, 3)
 	// TestGetNth([]int{10}, 0)
 
-	TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) // true
-	TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7})           // false
-	TestTreeComp([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, []int{10, 9, 8, 7, 6, 5, 4, 3, 2})    // false
-	TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7}, []int{1, 2, 3, 4, 5, 6, 7})                     // true
+	// TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) // true
+	// TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, []int{1, 2, 3, 4, 5, 6, 7})           // false
+	// TestTreeComp([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, []int{10, 9, 8, 7, 6, 5, 4, 3, 2})    // false
+	// TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7}, []int{1, 2, 3, 4, 5, 6, 7})                     // true
+
+	IsMinHeap([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+	IsMinHeap([]int{1, 2, 3, 4, 5, 6, 7})
+	IsMinHeap([]int{1, 2, 3, 4})
+	IsMinHeap([]int{0, 7, 1, 8, 2})
+	IsMinHeap([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1})
+	IsMinHeap([]int{10})
 }
 
 func TestBinTree(arr []int) {
@@ -106,4 +114,12 @@ func TestTreeComp(arr1, arr2 []int) {
 	cbt.PrintCompBinTree(t1)
 	fmt.Println("CheckCompleteness")
 	fmt.Println(cmp.CheckCompleteTree(t1))
+}
+
+func IsMinHeap(arr []int) {
+	t := cbt.CompBinTree(arr)
+	fmt.Println("--------------------------------------------------------------------------------")
+	fmt.Println()
+	cbt.PrintCompBinTree(t)
+	fmt.Println(mh.IsHeapTree(t))
 }
