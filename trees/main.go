@@ -27,6 +27,7 @@ import (
 	pap "trees/print-all-paths"
 	sch "trees/search-value"
 	sum "trees/sum-nodes"
+	ttl "trees/tree-to-list"
 )
 
 func main() {
@@ -48,12 +49,19 @@ func main() {
 	// TestTreeComp([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, []int{10, 9, 8, 7, 6, 5, 4, 3, 2})    // false
 	// TestTreeComp([]int{1, 2, 3, 4, 5, 6, 7}, []int{1, 2, 3, 4, 5, 6, 7})                     // true
 
-	IsMinHeap([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-	IsMinHeap([]int{1, 2, 3, 4, 5, 6, 7})
-	IsMinHeap([]int{1, 2, 3, 4})
-	IsMinHeap([]int{0, 7, 1, 8, 2})
-	IsMinHeap([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1})
-	IsMinHeap([]int{10})
+	// IsMinHeap([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+	// IsMinHeap([]int{1, 2, 3, 4, 5, 6, 7})
+	// IsMinHeap([]int{1, 2, 3, 4})
+	// IsMinHeap([]int{0, 7, 1, 8, 2})
+	// IsMinHeap([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1})
+	// IsMinHeap([]int{10})
+
+	TestTreeToList([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+	TestTreeToList([]int{1, 2, 3, 4, 5, 6, 7})
+	TestTreeToList([]int{1, 2, 3, 4})
+	TestTreeToList([]int{0, 7, 1, 8, 2})
+	TestTreeToList([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1})
+	TestTreeToList([]int{10})
 }
 
 func TestBinTree(arr []int) {
@@ -122,4 +130,13 @@ func IsMinHeap(arr []int) {
 	fmt.Println()
 	cbt.PrintCompBinTree(t)
 	fmt.Println(mh.IsHeapTree(t))
+}
+
+func TestTreeToList(arr []int) {
+	t := cbt.CompBinTree(arr)
+	fmt.Println("--------------------------------------------------------------------------------")
+	fmt.Println()
+	cbt.PrintCompBinTree(t)
+	ttl.InOrderDLLTree(t)
+	fmt.Println()
 }
