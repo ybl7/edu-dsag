@@ -1,0 +1,1 @@
+// Trivial since BST properties imply that this will be the leftmost node
