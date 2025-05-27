@@ -6,6 +6,7 @@ import (
 	min "dsa/bst/find-min"
 	sch "dsa/bst/find-node"
 	add "dsa/bst/insertion"
+	is "dsa/bst/is-bst"
 	"fmt"
 	"slices"
 )
@@ -73,4 +74,42 @@ func TestSearch(arr []int, n int) {
 
 	fmt.Printf("Min: %v\n", min.FindMin(t))
 	fmt.Printf("Max: %v\n", max.FindMax(t))
+	fmt.Printf("IsBST: %v\n", is.IsBST(t)) // true
+	t3 := t
+	var v int
+	// Now let's break our BST
+	if t3.Root.Left != nil {
+		v = t3.Root.Left.Val
+		t3.Root.Left.Val = 100
+	}
+	fmt.Println()
+	t3.PrintCompBinTree()
+	fmt.Println()
+	fmt.Printf("IsBST: %v\n", is.IsBST(t3)) // false
+
+	// Now let's make it a BST again
+	if t3.Root.Left != nil {
+		t3.Root.Left.Val = v
+	}
+	t3.PrintCompBinTree()
+	fmt.Println()
+	fmt.Printf("IsBST: %v\n", is.IsBST(t3)) // true
+
+	// Now let's break our BST again
+	if t3.Root.Right != nil {
+		v = t3.Root.Right.Val
+		t3.Root.Right.Val = -100
+	}
+	fmt.Println()
+	t3.PrintCompBinTree()
+	fmt.Println()
+	fmt.Printf("IsBST: %v\n", is.IsBST(t3)) // false
+
+	// Now let's make it a BST again
+	if t3.Root.Right != nil {
+		t3.Root.Right.Val = v
+	}
+	t3.PrintCompBinTree()
+	fmt.Println()
+	fmt.Printf("IsBST: %v\n", is.IsBST(t3)) // true
 }
