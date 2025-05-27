@@ -65,3 +65,53 @@ func (s *StackInt) Top() int {
 	val := s.s[l-1]
 	return val
 }
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------
+type StackString struct {
+	s []string
+}
+
+func (s *StackString) IsEmpty() bool {
+	if len(s.s) == 0 {
+		return true
+	}
+	return false
+}
+
+func (s *StackString) Length() int {
+	l := len(s.s)
+	return l
+}
+
+func (s *StackString) Print() {
+	length := len(s.s)
+	for i := 0; i < length; i++ {
+		fmt.Print(s.s[i], " ")
+	}
+	fmt.Println()
+}
+
+func (s *StackString) Push(value string) {
+	s.s = append(s.s, value)
+}
+
+func (s *StackString) Pop() string {
+	if s.IsEmpty() {
+		fmt.Println("Stack is empty")
+		return ""
+	}
+	l := len(s.s)
+	val := s.s[l-1]
+	s.s = s.s[:l-1]
+	return val
+}
+
+func (s *StackString) Top() string {
+	if s.IsEmpty() {
+		fmt.Println("Stack is empty")
+		return ""
+	}
+	l := len(s.s)
+	val := s.s[l-1]
+	return val
+}

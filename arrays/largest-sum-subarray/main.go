@@ -41,9 +41,9 @@ func LSS(arr []int) int {
 // [A, B, C]: {A}, {B}, {C}, {A, B}, {B, C}, {A, B, C} But NOT {A, C}
 
 // The calculations of sums overlap a lot, for example sum({A, B, C}) = sum({A, B}) + sum({C}) - how can we use this?
-// Let's call the set containing the sums of possilbe contiguous subsets of R that end at and cinlucde R[i] S_i  	where S1, S2, S3 correspond to i = 1, 2, 3
+// Let's call the set containing the sums of possilbe contiguous subsets of R that end at and cinlucde R[i] S_i where S1, S2, S3 correspond to i = 1, 2, 3
 // For example S1 = {{A}}
-// 			S2 = {{B}, {A+B}}
+// 			   S2 = {{B}, {A+B}}
 //             S3 = {{C}, {B+C}, {A+B+C}}
 
 // S_i = {x + R[i] for x in S_i-1} U {R[i]}

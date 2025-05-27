@@ -2,9 +2,12 @@ package main
 
 import (
 	"dsa/bst/bst-sorted-list"
+	max "dsa/bst/find-max"
+	min "dsa/bst/find-min"
 	sch "dsa/bst/find-node"
 	add "dsa/bst/insertion"
 	"fmt"
+	"slices"
 )
 
 func main() {
@@ -30,6 +33,8 @@ func main() {
 }
 
 func TestBSTFromSlc(arr []int) {
+	// Our BSTFromSlc function assumes a sorted array
+	slices.Sort(arr)
 	t := bst.BSTFromSlc(arr)
 	fmt.Println("-------------------------------------------------------------------------------")
 	t.PrintCompBinTree()
@@ -47,9 +52,25 @@ func TestAddNode(arr []int) {
 }
 
 func TestSearch(arr []int, n int) {
+	// Use the copy method so that we don't use the same underlying array
+	arr2 := make([]int, len(arr)) // grr, you must use make here, using a slice literal like []int{} doesn't work
+	copy(arr2, arr)
+	// Our BSTFromSlc function assumes a sorted array
+	slices.Sort(arr)
 	t := bst.BSTFromSlc(arr)
+	// Alternatively we can construct the BST by adding iteratively to the tree
+	t2 := &bst.BST{}
+	for _, e := range arr2 {
+		add.AddNodeTree(t2, e)
+	}
+	// The reason for showing both approaches, and printing both trees, is to demonstrate that the min/max values are always the leftmost/rightmost nodes respectively
 	fmt.Println("-------------------------------------------------------------------------------")
 	t.PrintCompBinTree()
 	fmt.Println()
+	t2.PrintCompBinTree()
+	fmt.Println()
 	sch.SearchBST(t, n)
+
+	fmt.Printf("Min: %v\n", min.FindMin(t))
+	fmt.Printf("Max: %v\n", max.FindMax(t))
 }

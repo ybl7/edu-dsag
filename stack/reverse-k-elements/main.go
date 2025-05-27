@@ -66,5 +66,3 @@ func ReverseK(s, t *stack.StackInt, k int) {
 	tmp2 := t.Pop()
 	s.Push(tmp2)
 }
-
-// reversing a substack

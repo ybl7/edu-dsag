@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	fmt.Println(InfixToPrefix("10+((3))*5/(16-4)")) // +10 * 3 / 5 - 16 4
-	fmt.Println(InfixToPrefix("((5+6)+9)"))         // ++569
-	fmt.Println(InfixToPrefix("((3+2)*(3-9)/(9))")) // /*+32-399
-	fmt.Println(InfixToPrefix("13+((5-9)*(2*9))"))
+	fmt.Println(InfixToPrefix("10+((3))*5/(16-4)")) // + 10 * 3 / 5 - 16 4
+	fmt.Println(InfixToPrefix("((5+6)+9)"))         // + + 5 6 9
+	fmt.Println(InfixToPrefix("((3+2)*(3-9)/(9))")) // * + 3 2 / - 3 9 9
+	fmt.Println(InfixToPrefix("13+((5-9)*(2*9))"))  // + 13 * - 5 9 * 2 9
 	// fmt.Println(string('+'))
 }
 
