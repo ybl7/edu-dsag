@@ -8,6 +8,7 @@ import (
 	sch "dsa/bst/find-node"
 	add "dsa/bst/insertion"
 	is "dsa/bst/is-bst"
+	lca "dsa/bst/least-common-ancestor"
 	"fmt"
 	"slices"
 )
@@ -33,12 +34,19 @@ func main() {
 	// TestSearch([]int{10}, 10)
 	// TestSearch([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 11)
 
-	TestDelete([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10)
-	TestDelete([]int{4, 5, 1, 2, 6, 7, 3}, 10)
-	TestDelete([]int{0, 3, 4, 2, 1}, 3)
-	TestDelete([]int{7, 1, 0, 7, 8, 2}, 7)
-	TestDelete([]int{10}, 10)
-	TestDelete([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 11)
+	// TestDelete([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10)
+	// TestDelete([]int{4, 5, 1, 2, 6, 7, 3}, 10)
+	// TestDelete([]int{0, 3, 4, 2, 1}, 3)
+	// TestDelete([]int{7, 1, 0, 7, 8, 2}, 7)
+	// TestDelete([]int{10}, 10)
+	// TestDelete([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 11)
+
+	TestLCA([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10, 7)
+	TestLCA([]int{4, 5, 1, 2, 6, 7, 3}, 7, 3)
+	TestLCA([]int{0, 3, 4, 2, 1}, 3, 4)
+	TestLCA([]int{7, 1, 0, 7, 8, 2}, 7, 2)
+	TestLCA([]int{10}, 10, 0)
+	TestLCA([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
 }
 
 func TestBSTFromSlc(arr []int) {
@@ -135,5 +143,19 @@ func TestDelete(arr []int, m int) {
 	} else {
 		t.PrintCompBinTree()
 		fmt.Println()
+	}
+}
+
+func TestLCA(arr []int, m, n int) {
+	slices.Sort(arr)
+	t := bst.BSTFromSlc(arr)
+	fmt.Println("-------------------------------------------------------------------------------")
+	t.PrintCompBinTree()
+	fmt.Println()
+	a, b := lca.LCATree(t, m, n)
+	if b {
+		fmt.Printf("LCM found for %v and %v: %v\n", m, n, a)
+	} else {
+		fmt.Printf("LCM not found for %v and %v\n", m, n)
 	}
 }
