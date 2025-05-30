@@ -6,15 +6,26 @@ import (
 )
 
 func FindMax(t *bst.BST) int {
-	return FindMaxNode(t.Root)
+	return FindMaxVal(t.Root)
 }
 
-func FindMaxNode(n *bst.Node) int {
+func FindMaxVal(n *bst.Node) int {
 	v := n.Val
 	curr := n.Right
 	for curr != nil {
 		// Set the value of v so that we save it, otherwise curr == nil is the condition for exiting this loop and we lose the value of the node
 		v = curr.Val
+		curr = curr.Right
+	}
+	return v
+}
+
+func FindMaxNode(n *bst.Node) *bst.Node {
+	v := n
+	curr := n.Right
+	for curr != nil {
+		// Set the value of v so that we save it, otherwise curr == nil is the condition for exiting this loop and we lose the value of the node
+		v = curr
 		curr = curr.Right
 	}
 	return v
