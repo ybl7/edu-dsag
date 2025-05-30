@@ -78,3 +78,32 @@ func GetPath(n *bst.Node, s int, path *[]int) *[]int {
 // Then we compare the chains and take the lowest common value
 
 // Now we can use the fact that this is a BST to help us reduce our search space and we can search simulatenously for all m nodes in a single tree traversal
+
+// Ok my solution is very bad, I missed a piece of logic, for any node a, the nodes m and n can be either
+// Both to the left of a, meaning they are both smaller
+// Both to the right of a, meaning they are both larger
+// Any other arrangement that splits m and n will lead them to be in different subtrees
+
+// If they are in different subtrees then we already have our answer, the current node must be their ancestor
+// In the cases where both nodes are in the same subtree, we just keep iterating down the tree until we hit the case where they are in different subtrees
+// We can do this check to see if they are in different subtrees without having to traverse the tree at all, BECAUSE IT'S A BST, so we just compare the values
+// of a, m, and n. This leads to a much shorter, efficient, elegant solution below:
+
+// func (t *Tree) LcaBST(first int, second int) (int, bool) {
+//     return LcaBST(t.root, first, second)
+// }
+
+// func LcaBST(curr *Node, first int, second int) (int, bool) {
+
+//     if curr == nil {
+//         fmt.Println("NotFoundException")
+//         return 0, false
+//     }
+//     if curr.value > first && curr.value > second {
+//         return LcaBST(curr.left, first, second)
+//     }
+//     if curr.value < first && curr.value < second {
+//         return LcaBST(curr.right, first, second)
+//     }
+//     return curr.value, true
+// }
