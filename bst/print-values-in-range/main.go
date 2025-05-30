@@ -58,3 +58,16 @@ func PrintValInRageNode(n *bst.Node, min, max int) {
 // Now here is the trick, we could store the values in a slice then return this and keep adding to it, then sort it at the end
 // But what happens if we traverse the tree in pre-order? Well, since it's a binary search tree, if we traverse in-order we will visit the left child first,
 // then the current node, then the right, and since we are guaranteer that n.Left < n < n.Right, we will get implicit ordering in our print statements
+
+// The courses solution is simpler and easier to understand: just traverse the tree in order and print when a node is in the desired range
+// func printDataInRange(root *Node, min int, max int) {
+// 	if root == nil {
+// 		return
+// 	}
+// 	printDataInRange(root.left, min, max)
+// 	if root.value >= min && root.value <= max {
+// 		fmt.Print(root.value, " ")
+// 	}
+// 	printDataInRange(root.right, min, max)
+// }
+// But I think(?) mine might be quicker for larger trees since we discard whole subtrees that we don't need instead of searching them
