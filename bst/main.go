@@ -9,6 +9,7 @@ import (
 	add "dsa/bst/insertion"
 	is "dsa/bst/is-bst"
 	lca "dsa/bst/least-common-ancestor"
+	pvr "dsa/bst/print-values-in-range"
 	"fmt"
 	"slices"
 )
@@ -41,12 +42,19 @@ func main() {
 	// TestDelete([]int{10}, 10)
 	// TestDelete([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 11)
 
-	TestLCA([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10, 7)
-	TestLCA([]int{4, 5, 1, 2, 6, 7, 3}, 7, 3)
-	TestLCA([]int{0, 3, 4, 2, 1}, 3, 4)
-	TestLCA([]int{7, 1, 0, 7, 8, 2}, 7, 2)
-	TestLCA([]int{10}, 10, 0)
-	TestLCA([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
+	// TestLCA([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10, 7)
+	// TestLCA([]int{4, 5, 1, 2, 6, 7, 3}, 7, 3)
+	// TestLCA([]int{0, 3, 4, 2, 1}, 3, 4)
+	// TestLCA([]int{7, 1, 0, 7, 8, 2}, 7, 2)
+	// TestLCA([]int{10}, 10, 0)
+	// TestLCA([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
+
+	TestPVR([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 4, 9)
+	TestPVR([]int{4, 5, 1, 2, 6, 7, 3}, 3, 7)
+	TestPVR([]int{0, 3, 4, 2, 1}, 0, 4)
+	TestPVR([]int{7, 1, 0, 7, 8, 2}, 2, 7)
+	TestPVR([]int{10}, 0, 10)
+	TestPVR([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
 }
 
 func TestBSTFromSlc(arr []int) {
@@ -158,4 +166,13 @@ func TestLCA(arr []int, m, n int) {
 	} else {
 		fmt.Printf("LCM not found for %v and %v\n", m, n)
 	}
+}
+
+func TestPVR(arr []int, m, n int) {
+	slices.Sort(arr)
+	t := bst.BSTFromSlc(arr)
+	fmt.Println("-------------------------------------------------------------------------------")
+	t.PrintCompBinTree()
+	fmt.Println()
+	pvr.PrintValInRangeTree(t, m, n)
 }
