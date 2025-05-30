@@ -2,6 +2,7 @@ package main
 
 import (
 	"dsa/bst/bst-sorted-list"
+	del "dsa/bst/delete-node"
 	max "dsa/bst/find-max"
 	min "dsa/bst/find-min"
 	sch "dsa/bst/find-node"
@@ -25,12 +26,19 @@ func main() {
 	// TestAddNode([]int{10})
 	// TestAddNode([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10})
 
-	TestSearch([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10)
-	TestSearch([]int{4, 5, 1, 2, 6, 7, 3}, 10)
-	TestSearch([]int{0, 3, 4, 2, 1}, 3)
-	TestSearch([]int{7, 1, 0, 7, 8, 2}, 7)
-	TestSearch([]int{10}, 10)
-	TestSearch([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 11)
+	// TestSearch([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10)
+	// TestSearch([]int{4, 5, 1, 2, 6, 7, 3}, 10)
+	// TestSearch([]int{0, 3, 4, 2, 1}, 3)
+	// TestSearch([]int{7, 1, 0, 7, 8, 2}, 7)
+	// TestSearch([]int{10}, 10)
+	// TestSearch([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 11)
+
+	TestDelete([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 10)
+	TestDelete([]int{4, 5, 1, 2, 6, 7, 3}, 10)
+	TestDelete([]int{0, 3, 4, 2, 1}, 3)
+	TestDelete([]int{7, 1, 0, 7, 8, 2}, 7)
+	TestDelete([]int{10}, 10)
+	TestDelete([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 11)
 }
 
 func TestBSTFromSlc(arr []int) {
@@ -112,4 +120,20 @@ func TestSearch(arr []int, n int) {
 	t3.PrintCompBinTree()
 	fmt.Println()
 	fmt.Printf("IsBST: %v\n", is.IsBST(t3)) // true
+}
+
+func TestDelete(arr []int, m int) {
+	slices.Sort(arr)
+	t := bst.BSTFromSlc(arr)
+	fmt.Println("-------------------------------------------------------------------------------")
+	t.PrintCompBinTree()
+	fmt.Println()
+	t.Root = del.DeleteNodeTree(t, m)
+	fmt.Println("Delete node: ", m)
+	if t.Root == nil {
+		fmt.Println("root: nil")
+	} else {
+		t.PrintCompBinTree()
+		fmt.Println()
+	}
 }

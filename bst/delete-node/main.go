@@ -11,7 +11,6 @@ func DeleteNodeTree(t *bst.BST, n int) *bst.Node {
 }
 
 func DeleteNode(n *bst.Node, m int) *bst.Node {
-	// Base case, if node is nil we can't check any left or right pointers, return nil to avoid pointer dereference errors
 	if n == nil {
 		return nil
 	}
