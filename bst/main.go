@@ -3,6 +3,7 @@ package main
 import (
 	"dsa/bst/bst-sorted-list"
 	del "dsa/bst/delete-node"
+	dvr "dsa/bst/delete-values-out-range"
 	max "dsa/bst/find-max"
 	min "dsa/bst/find-min"
 	sch "dsa/bst/find-node"
@@ -49,12 +50,19 @@ func main() {
 	// TestLCA([]int{10}, 10, 0)
 	// TestLCA([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
 
-	TestPVR([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 4, 9)
-	TestPVR([]int{4, 5, 1, 2, 6, 7, 3}, 3, 7)
-	TestPVR([]int{0, 3, 4, 2, 1}, 0, 4)
-	TestPVR([]int{7, 1, 0, 7, 8, 2}, 2, 7)
-	TestPVR([]int{10}, 0, 10)
-	TestPVR([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
+	// TestPVR([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 4, 9)
+	// TestPVR([]int{4, 5, 1, 2, 6, 7, 3}, 3, 7)
+	// TestPVR([]int{0, 3, 4, 2, 1}, 0, 4)
+	// TestPVR([]int{7, 1, 0, 7, 8, 2}, 2, 7)
+	// TestPVR([]int{10}, 0, 10)
+	// TestPVR([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
+
+	TestDVR([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 4, 9)
+	TestDVR([]int{4, 5, 1, 2, 6, 7, 3}, 3, 7)
+	TestDVR([]int{0, 3, 4, 2, 1}, 0, 4)
+	TestDVR([]int{7, 1, 0, 7, 8, 2}, 2, 7)
+	TestDVR([]int{10}, 0, 10)
+	TestDVR([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
 }
 
 func TestBSTFromSlc(arr []int) {
@@ -175,4 +183,15 @@ func TestPVR(arr []int, m, n int) {
 	t.PrintCompBinTree()
 	fmt.Println()
 	pvr.PrintValInRangeTree(t, m, n)
+}
+
+func TestDVR(arr []int, m, n int) {
+	slices.Sort(arr)
+	t := bst.BSTFromSlc(arr)
+	fmt.Println("-------------------------------------------------------------------------------")
+	t.PrintCompBinTree()
+	fmt.Println()
+	t.Root = dvr.DeleteRangeTree(t, m, n)
+	fmt.Printf("Tree after deletion outside reange %v to %v:\n", m, n)
+	t.PrintCompBinTree()
 }
