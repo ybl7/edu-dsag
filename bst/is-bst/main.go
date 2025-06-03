@@ -1,4 +1,3 @@
-// Trivial since BST properties imply that this will be the rightmost node
 package bst
 
 import (

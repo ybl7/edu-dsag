@@ -8,6 +8,7 @@ import (
 	min "dsa/bst/find-min"
 	sch "dsa/bst/find-node"
 	add "dsa/bst/insertion"
+	isp "dsa/bst/is-arr-bst"
 	is "dsa/bst/is-bst"
 	lca "dsa/bst/least-common-ancestor"
 	pvr "dsa/bst/print-values-in-range"
@@ -57,12 +58,17 @@ func main() {
 	// TestPVR([]int{10}, 0, 10)
 	// TestPVR([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
 
-	TestDVR([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 4, 9)
-	TestDVR([]int{4, 5, 1, 2, 6, 7, 3}, 3, 7)
-	TestDVR([]int{0, 3, 4, 2, 1}, 0, 4)
-	TestDVR([]int{7, 1, 0, 7, 8, 2}, 2, 7)
-	TestDVR([]int{10}, 0, 10)
-	TestDVR([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
+	// TestDVR([]int{6, 4, 9, 3, 7, 8, 2, 5, 1, 10}, 4, 9)
+	// TestDVR([]int{4, 5, 1, 2, 6, 7, 3}, 3, 7)
+	// TestDVR([]int{0, 3, 4, 2, 1}, 0, 4)
+	// TestDVR([]int{7, 1, 0, 7, 8, 2}, 2, 7)
+	// TestDVR([]int{10}, 0, 10)
+	// TestDVR([]int{6, 4, 2, 5, 1, 3, 8, 7, 9, 10}, 2, 4)
+
+	TestIsBSTArr([]int{5, 2, 4, 6, 9, 10})
+	TestIsBSTArr([]int{1, 3, 4, 5, 6, 7, 8, 9, 10})
+	TestIsBSTArr([]int{5, 2, 6, 4, 7, 9, 10})
+	TestIsBSTArr([]int{1, 2, 4, 8, 9, 5, 10, 3, 6, 7})
 }
 
 func TestBSTFromSlc(arr []int) {
@@ -194,4 +200,9 @@ func TestDVR(arr []int, m, n int) {
 	t.Root = dvr.DeleteRangeTree(t, m, n)
 	fmt.Printf("Tree after deletion outside reange %v to %v:\n", m, n)
 	t.PrintCompBinTree()
+}
+
+func TestIsBSTArr(arr []int) {
+	b := isp.IsArrBST(arr)
+	fmt.Printf("Is arr %v a preorder traversal of a BST: %v\n", arr, b)
 }
